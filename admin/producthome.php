@@ -35,6 +35,20 @@ function RefreshProd()
    loadRefreshTableProductTable(0,0);
 }
 
+function deleteproduct(id) {
+  if (confirm('apakah anda yakin ?')) {
+    $.ajax({
+      url : '../admin/deleteproduct.php',
+      type : 'POST',
+      dataType : 'json',
+      data : { id : id },
+      success : function (msg) {
+        loadRefreshTableProductTable(0,0);
+      }
+    })
+  }
+}
+
 function loadRefreshTableProductTable(pageId,Vid)
 {
     if (Vid==undefined)

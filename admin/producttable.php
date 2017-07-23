@@ -78,7 +78,7 @@ echo '<script>$("#headformid").html('."'".'<a href="#"  onClick="detailproduct(0
           echo '<td><a href="#" onClick="UploadPictureProduct('.$brs.','.$row["id"].')" class="btn btn-warning"><span id="'.$ImageCatute.'"></span><span class="meta meta--preview"><img style="width:50px;height:30px;" class="meta__avatar" src="'.$row["image"].'" alt="" /></span>Upload</a></td>';
           echo '<td>'.$row["price"].'</td>';
           echo '<td><a href="#" onClick="detailproduct('.$row["id"].',2);" class="btn btn-warning menu">Edit</a> </td>';
-          echo '<td><a href="#" class="btn btn-warning menu">Delete</a></td>';       	
+          echo '<td><a href="#" onClick="deleteproduct('.$row["id"].');" class="btn btn-warning menu">Delete</a></td>';       	
          	echo '</tr>';
          }
          ?>
