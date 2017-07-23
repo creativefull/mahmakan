@@ -7,7 +7,7 @@ $productid=$_POST["id"];
 $where=" WHERE product.id=".$productid;
 
 $connect = new mysqli($hostname,$username, $password,  $database);
-$query = mysqli_query($connect,"SELECT product.id,
+$query = mysqli_query($connect,"SELECT product.id,product.stock,
 product.productcode,product.productname,product.remaks,
 product.image,producttype.typename ,product.price,product.producttypeid
 FROM product LEFT JOIN producttype ON product.producttypeid=producttype.id ".$where,MYSQLI_USE_RESULT) or die("Gagal mengambil data");
@@ -16,6 +16,7 @@ FROM product LEFT JOIN producttype ON product.producttypeid=producttype.id ".$wh
     $typename="";
     $image="";
     $price=0;
+    $stock = "0";
     $producttypeid=0;
     $remaks="";
 while($row = mysqli_fetch_assoc($query)) {
@@ -23,6 +24,7 @@ while($row = mysqli_fetch_assoc($query)) {
     $productname=$row["productname"];
     $typename=$row["typename"];
     $price=$row["price"];
+    $stock = $row['stock'];
     $image="admin/".$row["image"];
     $producttypeid=$row["producttypeid"];
     $remaks=$row["remaks"];
@@ -53,6 +55,7 @@ echo '<input type="hidden" value='.$productid.' id="prodid">'
 
                        <?php
                     echo '<h3 class="cost"><small>Rp.'.$price.',-</small></h3>';
+                    echo '<h3 class="cost"><small>Stock : '.$stock.'</small></h3>';
                     ?>
 
                         <div class="row">     
