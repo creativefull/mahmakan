@@ -25,8 +25,10 @@ if ($idprod==0)
 	{
 	$connect->close();
 	$connect = new mysqli($hostname,$username, $password,  $database);
+	$potong = substr($productname, 0,2);
+	$code = strtoupper($potong)."-".$productcode;
 	$query='INSERT INTO product(productcode,productname,producttypeid,price,remaks,stock) select '
-	."'".$productcode."','".$productname."',".$producttypeid.",".$price.",'".$remaks.",'".$stock."'";
+	."'".$code."','".$productname."',".$producttypeid.",".$price.",'".$remaks."','".$stock."'";
 		if ($connect->query($query) === TRUE) {
 		    echo "<script>MessageAction('New record created successfully')</script>";
 		} else {
